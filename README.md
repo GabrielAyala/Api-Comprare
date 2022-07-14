@@ -22,3 +22,7 @@ If you discover a security vulnerability within Lumen, please send an e-mail to 
 ## License
 
 The Lumen framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+## How to run the application locally on your machine
+
+Clone the project repository and download all dependencies using Composer (composer install), after that, run the application with typing the command "php -S localhost:8000 -t public" and finally do a GET on the "localhost:8000/api/proconInfos" route to return the procon data in JSON format.
