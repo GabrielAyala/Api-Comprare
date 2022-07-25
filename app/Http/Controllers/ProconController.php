@@ -35,9 +35,19 @@ class ProconController extends Controller
         $newTableDetail = array_chunk($tableDetail, 14, true);
 
         foreach ($newTableDetail as $values) {
-            $newMarketPrices[] = array_combine($headerName, $values);
+            $newMarketPrices[] = array_combine(str_replace(' ', '', $headerName), $values);
         }
 
-        return $newMarketPrices;
+        for ($i = 1; $i <= count($newMarketPrices); $i++) {
+            $ids[] = [
+                "id" => $i
+            ];
+        }
+
+        for ($i = 0; $i < count($newMarketPrices); $i++) {
+            $finalMarketPrices[] = array_merge($ids[$i], $newMarketPrices[$i]);
+        }
+
+        return $finalMarketPrices;
     }
 }
