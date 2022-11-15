@@ -48,6 +48,25 @@ class ProconController extends Controller
             $finalMarketPrices[] = array_merge($ids[$i], $newMarketPrices[$i]);
         }
 
-        return $finalMarketPrices;
+        foreach ($finalMarketPrices as $values) {
+
+            foreach ($values as $key => $value) {
+
+                if ($key == 'Carne(coxãomole)1kg') {
+
+                    $new_key = 'Carne';
+
+                    $new_content = [
+                        $new_key => $value
+                    ];
+
+                    unset($values[$key]);
+
+                    $fixedMarketPrices[] = array_merge($values, $new_content);
+                }
+            }
+        }
+
+        return $fixedMarketPrices;
     }
 }
